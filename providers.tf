@@ -2,24 +2,24 @@
 # AWS PROVIDERS CROSS-ACCOUNT CONFIGURATION
 # ============================================
 
-# Provider for billing account (Account 1)
+# Provider for Account 1
 provider "aws" {
-  alias  = "billing"
-  region = "us-east-1"
+  alias  = var.account1_alias
+  region = var.region
 
   assume_role {
-    role_arn     = var.billing_account_role_arn
-    session_name = "terraform-billing-poc"
+    role_arn     = var.account1_role_arn
+    session_name = "terraform-account1-poc"
   }
 }
 
-# Provider for operations account (Account 2)
+# Provider for Account 2
 provider "aws" {
-  alias  = "operations"
-  region = "us-east-1"
+  alias  = var.account2_alias
+  region = var.region
 
   assume_role {
-    role_arn     = var.operations_account_role_arn
-    session_name = "terraform-operations-poc"
+    role_arn     = var.account2_role_arn
+    session_name = "terraform-account2-poc"
   }
 }

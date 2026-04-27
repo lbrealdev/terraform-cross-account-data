@@ -2,9 +2,9 @@
 # DATA SOURCES - ACCOUNT 2 (OPERATIONS)
 # ============================================
 
-# Search security groups in operations account
-data "aws_security_groups" "operations_db" {
-  provider = aws.operations
+# Search security groups in Account 2
+data "aws_security_groups" "account2_db" {
+  provider = aws.account2
 
   filter {
     name   = "tag:Environment"

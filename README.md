@@ -8,8 +8,8 @@ Access existing resources (VPCs, subnets, security groups) from multiple AWS acc
 
 ## 🏗️ Architecture
 
-- **Account 1 - Billing**: Billing account, responsible for main infrastructure (VPCs, subnets)
-- **Account 2 - Operations**: Operations account, responsible for more critical resources (security groups, etc.)
+- **Account 1**: Main infrastructure (VPCs, subnets)
+- **Account 2**: More critical resources (security groups)
 
 ## 🚀 How to use
 
@@ -28,8 +28,15 @@ Access existing resources (VPCs, subnets, security groups) from multiple AWS acc
 
 2. Edit `terraform.tfvars` and define your accounts and roles:
    ```hcl
-   billing_account_role_arn = "arn:aws:iam::YOUR_BILLING_ACCOUNT:role/BillingReadOnlyRole"
-   operations_account_role_arn = "arn:aws:iam::YOUR_OPERATIONS_ACCOUNT:role/OperationsReadOnlyRole"
+   region = "us-east-1"
+
+   account1_alias = "account1"
+   account1_id = "111111111111"
+   account1_role_arn = "arn:aws:iam::111111111111:role/Account1ReadOnlyRole"
+
+   account2_alias = "account2"
+   account2_id = "222222222222"
+   account2_role_arn = "arn:aws:iam::222222222222:role/Account2ReadOnlyRole"
    ```
 
 3. Initialize Terraform:
@@ -61,24 +68,24 @@ Access existing resources (VPCs, subnets, security groups) from multiple AWS acc
 
 ## 🔑 Providers
 
-### Account 1 (Billing)
+### Account 1
 ```hcl
 provider "aws" {
-  alias  = "billing"
+  alias  = "account1"
   assume_role {
-    role_arn     = var.billing_account_role_arn
-    session_name = "terraform-billing-poc"
+    role_arn     = var.account1_role_arn
+    session_name = "terraform-account1-poc"
   }
 }
 ```
 
-### Account 2 (Operations)
+### Account 2
 ```hcl
 provider "aws" {
-  alias  = "operations"
+  alias  = "account2"
   assume_role {
-    role_arn     = var.operations_account_role_arn
-    session_name = "terraform-operations-poc"
+    role_arn     = var.account2_role_arn
+    session_name = "terraform-account2-poc"
   }
 }
 ```

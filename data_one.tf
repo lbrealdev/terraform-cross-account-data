@@ -2,9 +2,9 @@
 # DATA SOURCES - ACCOUNT 1 (BILLING)
 # ============================================
 
-# Search VPC in billing account
-data "aws_vpc" "billing_main" {
-  provider = aws.billing
+# Search VPC in Account 1
+data "aws_vpc" "account1_main" {
+  provider = aws.account1
 
   filter {
     name   = "tag:Name"
@@ -12,9 +12,9 @@ data "aws_vpc" "billing_main" {
   }
 }
 
-# Search public subnets in billing account
-data "aws_subnet" "billing_public" {
-  provider = aws.billing
+# Search public subnets in Account 1
+data "aws_subnet" "account1_public" {
+  provider = aws.account1
 
   filter {
     name   = "tag:Name"
@@ -22,14 +22,14 @@ data "aws_subnet" "billing_public" {
   }
 }
 
-# Search all subnets in billing account
-data "aws_subnets" "billing_all" {
-  provider = aws.billing
+# Search all subnets in Account 1
+data "aws_subnets" "account1_all" {
+  provider = aws.account1
 }
 
-# Search security groups in billing account
-data "aws_security_groups" "billing_web" {
-  provider = aws.billing
+# Search security groups in Account 1
+data "aws_security_groups" "account1_web" {
+  provider = aws.account1
 
   filter {
     name   = "tag:Environment"

@@ -2,10 +2,15 @@
 # TERRAFORM VARIABLES EXAMPLE
 # ============================================
 
-# Billing account (Account 1)
-billing_account_id = "111111111111"
-billing_account_role_arn = "arn:aws:iam::111111111111:role/BillingReadOnlyRole"
+# Region for all accounts
+region = "us-east-1"
 
-# Operations account (Account 2)
-operations_account_id = "222222222222"
-operations_account_role_arn = "arn:aws:iam::222222222222:role/OperationsReadOnlyRole"
+# Account 1
+account1_alias = "account1"
+account1_id = "111111111111"
+account1_role_arn = "arn:aws:iam::111111111111:role/Account1ReadOnlyRole"
+
+# Account 2
+account2_alias = "account2"
+account2_id = "222222222222"
+account2_role_arn = "arn:aws:iam::222222222222:role/Account2ReadOnlyRole"

@@ -83,6 +83,17 @@ provider "aws" {
 }
 ```
 
+## 📊 Data Sources
+
+### Billing Account (data_one.tf)
+- `aws_vpc` - Search VPCs by tags
+- `aws_subnet` - Search public subnets
+- `aws_subnets` - Search all subnets
+- `aws_security_groups` - Search security groups by environment and tags
+
+### Operations Account (data_two.tf)
+- `aws_security_groups` - Search database security groups by environment and tags
+
 ## 📝 Contributing
 
 This is a POC (Proof of Concept) repository - follow your standard git workflow when ready.

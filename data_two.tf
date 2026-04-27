@@ -16,18 +16,3 @@ data "aws_security_groups" "operations_db" {
     values = ["db-*"]
   }
 }
-
-# Search EC2 instances in operations account
-data "aws_instances" "operations_running" {
-  provider = aws.operations
-
-  filter {
-    name   = "instance-state-name"
-    values = ["running"]
-  }
-
-  filter {
-    name   = "tag:Environment"
-    values = ["production"]
-  }
-}

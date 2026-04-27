@@ -49,14 +49,3 @@ output "operations_db_security_groups" {
   value       = data.aws_security_groups.operations_db.ids
   sensitive   = true
 }
-
-output "operations_running_instances" {
-  description = "Running EC2 instances from operations account with Environment=production"
-  value       = data.aws_instances.operations_running.ids
-  sensitive   = true
-}
-
-output "operations_instance_count" {
-  description = "Number of running instances found in operations account"
-  value       = length(data.aws_instances.operations_running.ids)
-}

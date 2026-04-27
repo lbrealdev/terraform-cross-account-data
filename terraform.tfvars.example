@@ -1,0 +1,11 @@
+# ============================================
+# TERRAFORM VARIABLES EXAMPLE
+# ============================================
+
+# Billing account (Account 1)
+billing_account_id = "111111111111"
+billing_account_role_arn = "arn:aws:iam::111111111111:role/BillingReadOnlyRole"
+
+# Operations account (Account 2)
+operations_account_id = "222222222222"
+operations_account_role_arn = "arn:aws:iam::222222222222:role/OperationsReadOnlyRole"
